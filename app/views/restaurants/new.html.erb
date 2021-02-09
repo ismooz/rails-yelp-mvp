@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Add a restaurant</h1>
+  <div>
+    <%= simple_form_for(@restaurant) do |r| %>
+    <%= r.input :name %>
+    <%= r.input :address %>
+    <%= r.input :phone_number %>
+    <%= r.input :category %>
+    <%= r.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to '<i class="fas fa-history"></i> - Back to list'.html_safe, restaurants_path %>
+</div>

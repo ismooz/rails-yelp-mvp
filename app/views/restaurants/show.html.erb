@@ -1,0 +1,12 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <div class="card">
+    <div>Address : <%= @restaurant.address %></div>
+    <div>Phone number : <%= @restaurant.phone_number %></div>
+    <div>Category : <%= @restaurant.category %></div>
+
+  </div>
+  <br>
+  <%= link_to '<i class="fas fa-history"></i> - Back to list'.html_safe, restaurants_path, class: "btn btn-primary" %>
+  <%= link_to '<i class="fas fa-plus"></i> - Add a review'.html_safe, new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+</div>
