@@ -1,12 +1,24 @@
 <div class="container">
-  <h1><%= @restaurant.name %></h1>
-  <div class="card">
-    <div>Address : <%= @restaurant.address %></div>
-    <div>Phone number : <%= @restaurant.phone_number %></div>
-    <div>Category : <%= @restaurant.category %></div>
+  <div class="col-6 offset-3">
+    <h1>"<%= @restaurant.name %>"</h1>
+    <div class="card">
+      <img class="card-img-top" src="https://unsplash.com/photos/Ciqxn7FE4vE" alt="Card image cap">
+      <div><strong>Address :</strong> <%= @restaurant.address %></div>
+      <div><strong>Phone number :</strong> <%= @restaurant.phone_number %></div>
+      <div><strong>Category :</strong> <%= @restaurant.category %></div>
+      <div>
+        <ul class="list-group">
+          <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item"><%= review.content %> - <%= review.rating %> - <%= link_to 'Remove', review_path(review), method: :delete, data: {confirm: "Are-your sure ?"}  %>
 
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <%= link_to '<i class="fas fa-history"></i> - Back to list'.html_safe, restaurants_path, class: "btn btn-primary float-left" %>
+    <%= link_to '<i class="fas fa-plus"></i> - Add a review'.html_safe, new_restaurant_review_path(@restaurant), class: "btn btn-primary float-right" %>
   </div>
-  <br>
-  <%= link_to '<i class="fas fa-history"></i> - Back to list'.html_safe, restaurants_path, class: "btn btn-primary" %>
-  <%= link_to '<i class="fas fa-plus"></i> - Add a review'.html_safe, new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+
 </div>
