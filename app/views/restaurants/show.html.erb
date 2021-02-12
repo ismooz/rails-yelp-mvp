@@ -2,15 +2,18 @@
   <div class="col-6 offset-3">
     <h1>"<%= @restaurant.name %>"</h1>
     <div class="card">
-      <img class="card-img-top" src="https://unsplash.com/photos/Ciqxn7FE4vE" alt="Card image cap">
+      <%= image_tag 'restaurant.jpg' %>
       <div><strong>Address :</strong> <%= @restaurant.address %></div>
       <div><strong>Phone number :</strong> <%= @restaurant.phone_number %></div>
       <div><strong>Category :</strong> <%= @restaurant.category %></div>
       <div>
         <ul class="list-group">
           <% @restaurant.reviews.each do |review| %>
-          <li class="list-group-item"><%= review.content %> - <%= review.rating %> - <%= link_to 'Remove', review_path(review), method: :delete, data: {confirm: "Are-your sure ?"}  %>
-
+          <li class="list-group-item"><%= review.content %> -
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %> -
+            <%= link_to 'Remove', review_path(review), method: :delete, data: {confirm: "Are-your sure ?"}  %>
           </li>
           <% end %>
         </ul>
